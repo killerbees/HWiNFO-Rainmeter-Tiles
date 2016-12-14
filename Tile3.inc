@@ -1,5 +1,5 @@
 [Rainmeter]
-Update=250
+Update=500
 BackgroundMode=2
 SolidColor=00,21,38,150
 
@@ -35,21 +35,21 @@ H=190
 	HWiNFOSensorInstance=#HWiNFOSensorInstance#
 	HWiNFOEntryId=#HWiNFOEntryId#
 	HWiNFOType=MaximumValue
-	#DynamicVariables=1
+	DynamicVariables=1
 	#Measure=String
 	#String=4000
 	
 [HWMin]
-	#Measure=Plugin
-	#Plugin=HWiNFO.dll
-	#HWiNFOSensorId=#HWiNFOSensorId#
-	#HWiNFOSensorInstance=#HWiNFOSensorInstance#
-	#HWiNFOEntryId=#HWiNFOEntryId#
-	#HWiNFOType=MinimumValue
+	Measure=Plugin
+	Plugin=HWiNFO.dll
+	HWiNFOSensorId=#HWiNFOSensorId#
+	HWiNFOSensorInstance=#HWiNFOSensorInstance#
+	HWiNFOEntryId=#HWiNFOEntryId#
+	HWiNFOType=MinimumValue
 	#Percentual=0
-	#DynamicVariables=1
-	Measure=String
-	String=0
+	DynamicVariables=1
+	#Measure=String
+	#String=0
 	
 [HWTitle]
 	Measure=Plugin
@@ -81,9 +81,9 @@ H=190
 	HWiNFOEntryId=#HWiNFOEntryId#
 	HWiNFOType=CurrentValue
 	DynamicVariables=1
-	MinValue=[HWMin]
+	#MinValue=[HWMin]
 	MaxValue=[HWMax]
-	#MinValue=0
+	MinValue=-40
 	#MaxValue=3000
 	#Percentual=0
 	
@@ -95,11 +95,10 @@ H=190
 	HWiNFOEntryId=#HWiNFOEntryId#
 	HWiNFOType=AverageValue
 	DynamicVariables=1
+	InvertMeasure=1
 	MinValue=[HWMin]
 	MaxValue=[HWMax]
-	#MinValue=0
-	#MaxValue=3000
-	#Percentual=0	
+	
 [title]
 Meter=STRING
 MeasureName=HWLabel
@@ -125,7 +124,6 @@ StringAlign=Left
 AntiAlias=1
 Text=%1
 
-
 [unit]
 Meter=STRING
 MeasureName=HWUnit
@@ -139,11 +137,9 @@ FontFace=DS-Digital
 AntiAlias=1
 Text=%1
 
-
-
 [max]
 Meter=STRING
-MeasureName=HWMeasure
+MeasureName=HWMax
 DynamicVariables=1
 X=20
 Y=92
@@ -152,7 +148,7 @@ FontFace=#FontName#
 FontSize=10
 StringAlign=LEFT
 AntiAlias=1
-Text= [HWMax][HWUnit]
+Text= %1[HWUnit]
 
 [min]
 Meter=STRING
@@ -164,7 +160,7 @@ FontFace=#FontName#
 FontSize=10
 StringAlign=LEFT
 AntiAlias=1
-Text=[HWMin][HWUnit]
+Text= %1[HWUnit]
 
 [avg]
 Meter=STRING
@@ -184,8 +180,7 @@ Text=Av: %1[HWUnit]
 	Y=93
 	H=1
 	W=160
-	SolidColor=52, 52, 52, 100
-	#SolidColor=152, 152, 52, 200
+	SolidColor=152, 152, 52, 200
 [99RedTransLine]
 	#Meter=IMAGE
 	#X=20
@@ -199,33 +194,32 @@ Text=Av: %1[HWUnit]
 	Y=114
 	H=1
 	W=160
-	SolidColor=00,21,38, 40
-	#SolidColor=152, 152, 52, 200
+	#SolidColor=00,21,38, 40
+	SolidColor=152, 152, 52, 200
 [50TransLine]
 	Meter=IMAGE
 	X=20
 	Y=135
 	H=1
 	W=160
-	SolidColor=00,21,38, 40
-	#SolidColor=152, 152, 52, 200
+	#SolidColor=00,21,38, 40
+	SolidColor=152, 152, 52, 200
 [25TransLine]
 	Meter=IMAGE
 	X=20
 	Y=156
 	H=1
 	W=160
-	SolidColor=00,21,38, 40
-	#SolidColor=152, 152, 52, 200
+	#SolidColor=00,21,38, 40
+	SolidColor=152, 152, 52, 200
 [0GreyLine]
 	Meter=IMAGE
 	X=20
 	Y=180
 	H=1
 	W=165
-	SolidColor=42, 42, 42, 255
-	#SolidColor=152, 152, 52, 200
-
+	#SolidColor=42, 42, 42, 255
+	SolidColor=152, 152, 52, 200
 
 [AVGHistoLine]
 	Meter=Line
@@ -234,9 +228,10 @@ Text=Av: %1[HWUnit]
 	Y=98
 	H=83
 	W=165
-	LineColor=8,250,253, 190
+	#LineColor=8,250,253, 190
+	LineColor=152, 52, 52, 200
 	AntiAlias=1
-	AutoScale=0
+	AutoScale=1
 	
 [TopHistoLine]
 	Meter=Line
@@ -245,20 +240,20 @@ Text=Av: %1[HWUnit]
 	Y=98
 	H=83
 	W=165
-	LineColor=8,250,253, 190
-	AntiAlias=1
-	AutoScale=0
+	LineColor=250,50,53, 190
+	#AntiAlias=1
+	#AutoScale=1
 	
-[TransHisto]
-	Meter=HISTOGRAM
-	MeasureName=HWMeasure
-	X=0r
-	Y=98
-	H=83
-	W=165
-	PrimaryColor=8,250,253, 80
-	AntiAlias=1
-	AutoScale=0
+#[TransHisto]
+#	Meter=HISTOGRAM
+#	MeasureName=HWMeasure
+#	X=0r
+#	Y=98
+#	H=83
+#	W=165
+#	PrimaryColor=8,250,253, 40
+#	AntiAlias=1
+#	#AutoScale=1
 
 [CPUUsage%]
 	Meter=STRING

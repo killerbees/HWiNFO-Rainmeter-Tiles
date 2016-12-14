@@ -1,5 +1,5 @@
 [Rainmeter]
-Update=500
+Update=200
 BackgroundMode=2
 SolidColor=00,21,38,150
 
@@ -86,6 +86,21 @@ H=190
 	#MinValue=0
 	#MaxValue=3000
 	#Percentual=0
+
+[HWMeasureDamped]
+	Measure=Plugin
+	Plugin=HWiNFO.dll
+	HWiNFOSensorId=#HWiNFOSensorId#
+	HWiNFOSensorInstance=#HWiNFOSensorInstance#
+	HWiNFOEntryId=#HWiNFOEntryId#
+	HWiNFOType=CurrentValue
+	DynamicVariables=1
+	AverageSize=50
+	MinValue=[HWMin]
+	MaxValue=[HWMax]
+	#MinValue=0
+	#MaxValue=3000
+	#Percentual=0	
 	
 [HWMeasureiNV]
 	Measure=Plugin
@@ -191,10 +206,6 @@ FontSize=10
 StringAlign=LEFT
 AntiAlias=1
 Text=Av: %1[HWUnit]
-
-
-
-
 	
 
 	
@@ -212,6 +223,24 @@ Text=Av: %1[HWUnit]
 	LineSTart=40
 	LineWidth=3
 	LineColor=8,250,253, 200
+	Solid =0
+	AntiAlias=1
+	#AutoScale=
+	
+	
+[DampedHistoLine]
+	Meter=Roundline
+	MeasureName=HWMeasureDamped
+	X=0r
+	Y=0r
+	#H=63
+	#W=63
+	StartAngle=3.14159
+	RotationAngle=3.14159
+	LineLength=80
+	LineSTart=40
+	LineWidth=3
+	LineColor=150,150,100, 200
 	Solid =0
 	AntiAlias=1
 	#AutoScale=

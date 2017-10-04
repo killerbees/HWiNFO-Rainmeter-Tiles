@@ -1,5 +1,5 @@
 [Rainmeter]
-Update=250
+Update=500
 BackgroundMode=2
 SolidColor=00,21,38,150
 
@@ -35,19 +35,18 @@ H=190
 	HWiNFOSensorInstance=#HWiNFOSensorInstance#
 	HWiNFOEntryId=#HWiNFOEntryId#
 	HWiNFOType=MaximumValue
-	#DynamicVariables=1
+	DynamicVariables=1
 	#Measure=String
-	#String=4000
+	#String=0
 	
 [HWMin]
-	#Measure=Plugin
-	#Plugin=HWiNFO.dll
-	#HWiNFOSensorId=#HWiNFOSensorId#
-	#HWiNFOSensorInstance=#HWiNFOSensorInstance#
-	#HWiNFOEntryId=#HWiNFOEntryId#
-	#HWiNFOType=MinimumValue
-	#Percentual=0
-	#DynamicVariables=1
+	Measure=Plugin
+	Plugin=HWiNFO.dll
+	HWiNFOSensorId=#HWiNFOSensorId#
+	HWiNFOSensorInstance=#HWiNFOSensorInstance#
+	HWiNFOEntryId=#HWiNFOEntryId#
+	HWiNFOType=MinimumValue
+	DynamicVariables=1
 	Measure=String
 	String=0
 	
@@ -59,7 +58,7 @@ H=190
 	HWiNFOEntryId=#HWiNFOEntryId#
 	HWiNFOType=SensorName
 	RegExpSubstitute=1
-	Substitute="^(.*]: )":"","(: .*)$":""
+	Substitute="^(.{0,22}).+$":"\1 ..."
 	UpdateDivider=30	
 	
 [HWLabel]
@@ -85,8 +84,15 @@ H=190
 	MaxValue=[HWMax]
 	#MinValue=0
 	#MaxValue=3000
-	#Percentual=0
+	Percentual=0
 	
+[HWMHist]
+	Meter=String
+	String = ([HWMax]/[HWMeasure])*100
+	Percentual=1
+	DynamicVariales=1
+	MinValue=0
+	MaxValue=100
 [HWAverage]
 	Measure=Plugin
 	Plugin=HWiNFO.dll
@@ -99,7 +105,7 @@ H=190
 	MaxValue=[HWMax]
 	#MinValue=0
 	#MaxValue=3000
-	#Percentual=0	
+	Percentual=0
 [title]
 Meter=STRING
 MeasureName=HWLabel
@@ -143,7 +149,7 @@ Text=%1
 
 [max]
 Meter=STRING
-MeasureName=HWMeasure
+MeasureName=HWMax
 DynamicVariables=1
 X=20
 Y=92
@@ -157,6 +163,7 @@ Text= [HWMax][HWUnit]
 [min]
 Meter=STRING
 MeasureName=HWMin
+DynamicVariables=1
 X=20
 Y=167
 FontColor=8,250,253, 190
@@ -234,7 +241,7 @@ Text=Av: %1[HWUnit]
 	Y=98
 	H=83
 	W=165
-	LineColor=8,250,253, 190
+	LineColor=255,0,0,150
 	AntiAlias=1
 	AutoScale=0
 	
@@ -245,18 +252,18 @@ Text=Av: %1[HWUnit]
 	Y=98
 	H=83
 	W=165
-	LineColor=8,250,253, 190
+	LineColor=8,250,253,190
 	AntiAlias=1
 	AutoScale=0
 	
 [TransHisto]
 	Meter=HISTOGRAM
-	MeasureName=HWMeasure
+	MeasureName=HWMHist
 	X=0r
 	Y=98
 	H=83
 	W=165
-	PrimaryColor=8,250,253, 80
+	PrimaryColor=0,255,100, 255
 	AntiAlias=1
 	AutoScale=0
 

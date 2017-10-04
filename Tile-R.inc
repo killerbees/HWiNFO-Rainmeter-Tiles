@@ -1,7 +1,8 @@
 [Rainmeter]
-Update=200
+Update=500
 BackgroundMode=2
 SolidColor=00,21,38,150
+
 
 [Background]
 Meter=IMAGE
@@ -26,6 +27,7 @@ H=190
 	HWiNFOType=Units
 	#RegExpSubstitute=1
 	#Substitute="^(.*]: )":"","(: .*)$":""
+	#Substitute="^(.*: )":"","^(.{0,23}).+$":"\1..."
 	UpdateDivider=30
 	
 [HWMax]
@@ -51,6 +53,7 @@ H=190
 	Measure=String
 	String=0
 	
+	
 [HWTitle]
 	Measure=Plugin
 	Plugin=HWiNFO.dll
@@ -59,8 +62,10 @@ H=190
 	HWiNFOEntryId=#HWiNFOEntryId#
 	HWiNFOType=SensorName
 	RegExpSubstitute=1
-	Substitute="^(.*]: )":"","(: .*)$":""
+	#Substitute="^(.*]: )":"","(: .*)$":""
+	Substitute="^(.{0,22}).+$":"\1 ..."
 	UpdateDivider=30	
+	
 	
 [HWLabel]
 	Measure=Plugin
@@ -70,8 +75,10 @@ H=190
 	HWiNFOEntryId=#HWiNFOEntryId#
 	HWiNFOType=EntryName
 	RegExpSubstitute=1
-	Substitute="^(.*]: )":"","(: .*)$":""
+	#Substitute="^(.*]: )":"","(: .*)$":""
+	#Substitute="^(.*: )":"","^(.{0,15}).+$":"\1..."
 	UpdateDivider=30	
+	
 
 [HWMeasure]
 	Measure=Plugin
@@ -82,10 +89,10 @@ H=190
 	HWiNFOType=CurrentValue
 	DynamicVariables=1
 	MinValue=[HWMin]
-	MaxValue=[HWMax]
+	#MaxValue=[HWMax]
 	#MinValue=0
-	#MaxValue=3000
-	#Percentual=0
+	MaxValue=100
+	Percentual=1
 
 [HWMeasureDamped]
 	Measure=Plugin
@@ -95,12 +102,13 @@ H=190
 	HWiNFOEntryId=#HWiNFOEntryId#
 	HWiNFOType=CurrentValue
 	DynamicVariables=1
-	AverageSize=50
+	AverageSize=100
 	MinValue=[HWMin]
-	MaxValue=[HWMax]
+	#MaxValue=[HWMax]
 	#MinValue=0
-	#MaxValue=3000
+	MaxValue=100
 	#Percentual=0	
+	Percentual=1
 	
 [HWMeasureiNV]
 	Measure=Plugin
@@ -110,12 +118,13 @@ H=190
 	HWiNFOEntryId=#HWiNFOEntryId#
 	HWiNFOType=CurrentValue
 	DynamicVariables=1
-	MinValue=[HWMin]
-	MaxValue=[HWMax]
 	InvertMeasure=1
+	MinValue=[HWMin]
+	#MaxValue=[HWMax]
 	#MinValue=0
-	#MaxValue=3000
+	MaxValue=100
 	#Percentual=0	
+	Percentual=1
 	
 [HWAverage]
 	Measure=Plugin
@@ -130,6 +139,7 @@ H=190
 	#MinValue=0
 	#MaxValue=3000
 	#Percentual=0	
+	Percentual=1
 
 [title]
 Meter=STRING
@@ -144,6 +154,7 @@ StringAlign=left
 AntiAlias=1
 Text=%1 %2
 
+
 [label]
 Meter=STRING
 MeasureName=HWTitle
@@ -155,6 +166,7 @@ FontSize=12
 StringAlign=Left
 AntiAlias=1
 Text=%1
+
 
 [unit]
 Meter=STRING
@@ -194,6 +206,7 @@ FontSize=10
 StringAlign=LEFT
 AntiAlias=1
 Text=[HWMin][HWUnit]
+ClipString=1
 
 [avg]
 Meter=STRING
@@ -206,7 +219,7 @@ FontSize=10
 StringAlign=LEFT
 AntiAlias=1
 Text=Av: %1[HWUnit]
-	
+
 
 	
 [TopHistoLine]

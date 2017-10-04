@@ -1,0 +1,10 @@
+[I 09:26:48.431 NotebookApp] Serving notebooks from local directory: C:\storage\workspace\Anaconda2\Scripts
+[I 09:26:48.431 NotebookApp] 0 active kernels 
+[I 09:26:48.431 NotebookApp] The Jupyter Notebook is running at: http://localhost:8888/?token=4842112f5b01e77569e29b87010802cf626504dfd916dc94
+[I 09:26:48.431 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 09:26:48.440 NotebookApp] 
+    
+    Copy/paste this URL into your browser when you connect for the first time,
+    to login with a token:
+        http://localhost:8888/?token=4842112f5b01e77569e29b87010802cf626504dfd916dc94
+[I 09:26:48.753 NotebookApp] Accepting one-time-token-authenticated connection from ::1

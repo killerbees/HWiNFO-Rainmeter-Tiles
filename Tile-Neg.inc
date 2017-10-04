@@ -29,39 +29,21 @@ H=190
 	UpdateDivider=30
 	
 [HWMax]
-	Measure=Plugin
-	Plugin=HWiNFO.dll
-	HWiNFOSensorId=#HWiNFOSensorId#
-	HWiNFOSensorInstance=#HWiNFOSensorInstance#
-	HWiNFOEntryId=#HWiNFOEntryId#
-	HWiNFOType=MaximumValue
-	DynamicVariables=1
-	#Measure=String
-	#String=4000
+	
+	Measure=String
+	String=100
 	
 [HWMin]
-	Measure=Plugin
-	Plugin=HWiNFO.dll
-	HWiNFOSensorId=#HWiNFOSensorId#
-	HWiNFOSensorInstance=#HWiNFOSensorInstance#
-	HWiNFOEntryId=#HWiNFOEntryId#
-	HWiNFOType=MinimumValue
-	#Percentual=0
-	DynamicVariables=1
-	#Measure=String
-	#String=0
+	
+	Measure=String
+	String=0
 	
 [HWCur]
-	Measure=Plugin
-	Plugin=HWiNFO.dll
-	HWiNFOSensorId=#HWiNFOSensorId#
-	HWiNFOSensorInstance=#HWiNFOSensorInstance#
-	HWiNFOEntryId=#HWiNFOEntryId#
-	HWiNFOType=CurrentValue
-	#Percentual=0
+	Measure=Calc
 	DynamicVariables=1
-	#Measure=String
-	#String=0
+	Formula=([HWMeasure]+50)
+	MinValue=[HWMin]
+	MaxValue=[HWMax]
 	
 [HWTitle]
 	Measure=Plugin
@@ -151,30 +133,7 @@ FontFace=DS-Digital
 AntiAlias=1
 Text=%1
 
-[max]
-Meter=STRING
-MeasureName=HWMax
-DynamicVariables=1
-X=20
-Y=92
-FontColor=8,250,253, 190
-FontFace=#FontName#
-FontSize=10
-StringAlign=LEFT
-AntiAlias=1
-Text= %1[HWUnit]
 
-[min]
-Meter=STRING
-MeasureName=HWMin
-X=20
-Y=167
-FontColor=8,250,253, 190
-FontFace=#FontName#
-FontSize=10
-StringAlign=LEFT
-AntiAlias=1
-Text= %1[HWUnit]
 
 [avg]
 Meter=STRING
@@ -211,14 +170,7 @@ Text=Av: %1[HWUnit]
 	W=160
 	SolidColor=42, 42, 42, 255
 	#SolidColor=152, 152, 52, 200
-[50TransLine]
-	Meter=IMAGE
-	X=20
-	Y=135
-	H=1
-	W=160
-	SolidColor=42, 42, 42, 255
-	#SolidColor=152, 152, 52, 200
+
 [25TransLine]
 	Meter=IMAGE
 	X=20
@@ -236,9 +188,31 @@ Text=Av: %1[HWUnit]
 	SolidColor=42, 42, 42, 255
 	#SolidColor=152, 152, 52, 200
 
+
+	
+[50TransLine]
+	Meter=IMAGE
+	X=20
+	Y=140
+	H=45
+	W=165
+	SolidColor=100, 0, 0, 200
+	#SolidColor=152, 152, 52, 200
+	
+[TransHisto]
+	Meter=HISTOGRAM
+	MeasureName=HWCur
+	X=0r
+	Y=98
+	H=87
+	W=165
+	PrimaryColor=8,100,100, 200
+	AntiAlias=1
+	AutoScale=0
+
 [AVGHistoLine]
 	Meter=Line
-	MeasureName=HWAverage
+	MeasureName=HWAverage + 30
 	X=0r
 	Y=98
 	H=83
@@ -250,30 +224,55 @@ Text=Av: %1[HWUnit]
 	
 [TopHistoLine]
 	Meter=Line
-	MeasureName=HWMeasure
+	MeasureName=HWCur
 	X=0r
 	Y=98
-	H=83
+	H=87
 	W=165
 	LineColor=8,250,253, 190
 	AntiAlias=1
 	AutoScale=0
-	
-[TransHisto]
-	Meter=HISTOGRAM
-	MeasureName=HWMeasure
-	X=0r
-	Y=98
-	H=83
-	W=165
-	PrimaryColor=8,250,253, 40
+[0Label]
+	Meter=STRING
+	MeasureName=HWMin
+	X=20
+	Y=135
+	FontColor=8,250,253, 190
+	FontFace=#FontName#
+	FontSize=10
+	StringAlign=LEFT
 	AntiAlias=1
-	AutoScale=0
+	Text= 0[HWUnit]
+
+[max]
+	Meter=STRING
+	MeasureName=HWMax
+	DynamicVariables=1
+	X=20
+	Y=92
+	FontColor=8,250,253, 190
+	FontFace=#FontName#
+	FontSize=10
+	StringAlign=LEFT
+	AntiAlias=1
+	Text= 50[HWUnit]
+
+[min]
+	Meter=STRING
+	MeasureName=HWMin
+	X=20
+	Y=167
+	FontColor=8,250,253, 190
+	FontFace=#FontName#
+	FontSize=10
+	StringAlign=LEFT
+	AntiAlias=1
+	Text= -50[HWUnit]
 
 [CPUUsage%]
 	Meter=STRING
 	FontFace=DS-Digital
-	MeasureName=HWCur
+	MeasureName=HWMeasure
 	X=160
 	Y=12
 	FontColor=8,250,253, 190
